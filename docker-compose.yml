@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    # 1 mac固有の問題で、platformつけないと動かん
+    # https://stackoverflow.com/questions/65456814/docker-apple-silicon-m1-preview-mysql-no-matching-manifest-for-linux-arm64-v8
+    platform: linux/amd64
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: cleanachitecturedb
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+  app:
+    image: golang:1.16
+    environment:
+      MYAPP_DATABASE_HOST: db
+    command: "go run server.go"
+    volumes:
+      - ./src:/go/src
+    working_dir: /go/src/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
