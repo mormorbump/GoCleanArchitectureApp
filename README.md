@@ -7,13 +7,13 @@ Check out the source
 
 ```shell
 cd $WORKDIR
-git clone https://github.com/hirotakan/go-cleanarchitecture-sample.git
+git clone https://github.com/mormorbump/GoCleanArchitectureApp.git
 ```
 
 ### Setup the package
 
 ```shell
-cd CleanarchitectureApp/src/app
+cd GoCleanArchitectureApp/src/app
 go mod tidy
 go mod vendor
 ```
@@ -21,7 +21,7 @@ go mod vendor
 ### Running with Docker
 
 ```shell
-cd $WORKDIR/go-cleanarchitecture-sample
+cd $WORKDIR/GoCleanArchitectureApp
 docker-compose up
 ```
 
