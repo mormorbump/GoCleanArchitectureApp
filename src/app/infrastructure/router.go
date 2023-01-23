@@ -8,7 +8,7 @@ import (
 	"app/interfaces/controllers"
 )
 
-// gin.Engineの型を定義。
+// Router gin.Engineの型を定義。
 // Engineはフレームワークのインスタンスで、マルチプレクサ、ミドルウェア、コンフィギュレーション設定などが含まれる。
 // New()やDefault()を使って、Engineのインスタンスを生成
 var Router *gin.Engine
@@ -25,9 +25,9 @@ func init() {
 	// なので*gin.Contextを引数にとった無名関数を代入し、中でuserController.Create(c)を実行。
 	// *gin.Contextにリクエストなどの情報が入ってるので、それをcとしてControllerにも代入している。
 	// こうすることによって情報をもったままPOST /usersが呼ばれた時にUserController#Createが実行される。
-	routerConfig.POST("/users", func(c *gin.Context) { userController.Create(c)})
-	routerConfig.GET("/users", func(c *gin.Context) { userController.Index(c)})
-	routerConfig.GET("/users/:id", func(c *gin.Context) { userController.Show(c)})
+	routerConfig.POST("/users", func(c *gin.Context) { userController.Create(c) })
+	routerConfig.GET("/users", func(c *gin.Context) { userController.Index(c) })
+	routerConfig.GET("/users/:id", func(c *gin.Context) { userController.Show(c) })
 
 	Router = routerConfig // 外から呼び出すのはvar Routerなので、Configを代入。
 }

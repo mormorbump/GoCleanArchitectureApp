@@ -35,7 +35,7 @@ func NewUserController(sqlHandler database.ISqlHandler) *UserController {
 //　今回はHTTPリクエストの時にくる情報をひとまとめにしてるものがContextって感じ。
 func (controller UserController) Create(c Context)  {
 	u := domain.User{}
-	c.Bind(&u) // Bindの引数はinterface{}なのでどのドメインも入る。
+	_ = c.Bind(&u)                            // Bindの引数はinterface{}なのでどのドメインも入る。
 	user, err := controller.Interactor.Add(u) // リポジトリでの永続化(Store)を行うため
 	if err != nil {
 		c.JSON(500, NewError(err))

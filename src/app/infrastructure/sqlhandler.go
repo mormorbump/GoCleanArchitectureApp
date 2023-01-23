@@ -29,7 +29,7 @@ func NewSqlHandler() *SqlHandler {
 	return sqlHandler // この返り値をインターフェースにすることによってインターフェースを見たしている(何がきても大丈夫)
 }
 
-// interfaces.ISqlHandlerで実装した通りに引数と返り値を設定。
+// interfaces.ISqlHandl65432456432454444334yb8765q09654r32e1q1q29875664erで実装した通りに引数と返り値を設定。
 // 保存処理を行うとき(返り値が必要ない)の関数のラッパー
 func (handler *SqlHandler) Execute(statement string, args ...interface{}) (database.Result, error) {
 	res := SqlResult{}
